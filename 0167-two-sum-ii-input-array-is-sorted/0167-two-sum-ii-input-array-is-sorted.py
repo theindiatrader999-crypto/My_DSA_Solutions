@@ -1,11 +1,13 @@
-from collections import Counter
 class Solution:
     def twoSum(self, numbers: list[int], target: int) -> list[int]:
-        dic={}
-        for i in range(len(numbers)):
-            if target - numbers[i] not in dic:
-                dic[numbers[i]] = i+1
+        left=0
+        right=len(numbers)-1
+        while left < right:
+            if numbers[left] + numbers[right] == target:
+                return [left+1,right+1]
+            elif numbers[left] + numbers[right] > target:
+                right -=1
             else:
-                return [dic[target-numbers[i]],i+1]
+                left+=1
 
         
